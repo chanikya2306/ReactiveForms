@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   loginForm:any;
+  displayFirstname:any;
+  displayEmail:any;
   constructor() { }
 
   ngOnInit(): void {
@@ -41,7 +43,15 @@ export class HomeComponent implements OnInit {
   submitForm(){
     if(this.loginForm.get("password").value == this.loginForm.get("repassword").value){
       console.log("password conform password are matched")
-      console.log(this.loginForm)
+      console.log(this.loginForm);
+      localStorage.setItem("firstname",this.loginForm.value.firstname);
+      localStorage.setItem("lastname",this.loginForm.value.lastname);
+      localStorage.setItem("email",this.loginForm.value.email);
+      localStorage.setItem("password",this.loginForm.value.password);
+      localStorage.setItem("repassword",this.loginForm.value.repassword);
+      localStorage.setItem("phonenumber",this.loginForm.value.phonenumber);
+      this.displayFirstname = localStorage.getItem('firstname');
+      this.displayEmail = localStorage.getItem('email');
     }
    
   }
